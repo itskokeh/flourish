@@ -8,7 +8,7 @@
 	<title>Kokeh - Projects</title>
 </svelte:head>
 
-<section>
+<section class="mx-auto max-w-3xl">
 	<div class="mb-4">
 		<h1 class="text-2xl font-extrabold">Projects</h1>
 		<p class="-mt-0.5">Things I've Built</p>
@@ -30,9 +30,9 @@
 			<ProjectCard
 				slug={project.slug}
 				title={project.title}
-				excerpt={project.excerpt}
+				description={project.description}
+				techStack={project.techStack}
 				tags={project.tags}
-				publishDate={project.publishDate}
 				featuredImage={project.featuredImage}
 			/>
 		{/each}

@@ -12,7 +12,7 @@
 	/>
 </svelte:head>
 
-<section class="max-w-2xl flex flex-col gap-4">
+<section class="max-w-3xl flex flex-col gap-4 mx-auto">
 	<div class="flex flex-col justify-center items-center">
 		<img
 			src="/theme-script.webp"

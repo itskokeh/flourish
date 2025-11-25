@@ -42,7 +42,7 @@
 	{@html `<script type="application/ld+json">${jsonLdString}</script>`}
 </svelte:head>
 
-<section>
+<section class="mx-auto max-w-3xl">
 	<div>
 		<h1>Blog</h1>
 	</div>

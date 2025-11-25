@@ -1,5 +1,5 @@
 <script lang="ts">
-	let { slug, title, excerpt, tags, publishDate, featuredImage } = $props();
+	let { slug, title, description, tags, featuredImage, techStack } = $props();
 </script>
 
 <div
@@ -13,8 +13,12 @@
 		/>
 		<div class="p-4 flex flex-col gap-2">
 			<h3>{title}</h3>
-			<p>{excerpt}</p>
-			<p>Published on: {publishDate}</p>
+			<p>{description}</p>
+			<div class="flex flex-wrap items-center gap-2">
+				{#each techStack as tech}
+					<span class="tag">{tech}</span>
+				{/each}
+			</div>
 			<div class="flex flex-wrap items-center gap-2">
 				{#each tags as tag}
 					<span class="tag">{tag}</span>
