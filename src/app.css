@@ -1,0 +1,50 @@
+@font-face {
+	font-family: 'Inter';
+	src: url('/Inter-VariableFont_opsz\,wght.ttf') format('woff2');
+	font-style: normal;
+	font-display: swap;
+}
+
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+	--color-dark: #09090b;
+	--color-light: white;
+	--color-primary: rgb(156, 163, 175);
+	--color-secondary: yellow;
+	--color-darkMode-bg: #191A1D;
+	--color-lightMode-bg: #DCECEC;
+	--color-darkMode-text: #ffffff;
+	--color-lightMode-text: #000000;
+	--color-lightMode-accent: #320236;
+	--color-darkMode-accent: #CCE1F5;
+	--color-darkMode-card: #212225;
+	--color-lightMode-card: #F3F4F6;
+}
+
+html {
+	font-family: 'Inter', 'sans-serif';
+	scrollbar-gutter: stable;
+}
+
+@layer base {
+	html {
+		@apply dark:bg-darkMode-bg bg-lightMode-bg text-lightMode-text dark:text-darkMode-text p-0 m-0
+	}
+	h1 {
+		@apply font-bold text-3xl
+	}
+	h2 {
+		@apply text-2xl font-bold
+	}
+	h3 {
+		@apply text-xl font-bold
+	}
+}
+
+@layer components {
+	.tag {
+		@apply px-3 py-1 rounded-sm text-sm font-medium bg-lightMode-accent text-darkMode-text dark:bg-darkMode-accent dark:text-lightMode-text
+	}
+}
