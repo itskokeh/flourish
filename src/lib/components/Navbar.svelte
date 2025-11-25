@@ -9,7 +9,6 @@
 	};
 </script>
 
-<!-- TODO: make nav show only icons for mobile view -->
 <nav
 	class="flex gap-4 p-4 justify-around fixed bottom-0 max-w-3xl w-full border-t border-black/50 bg-lightMode-bg/80 dark:border-gray-700 dark:bg-darkMode-bg/80 backdrop-blur-sm left-1/2 -translate-x-1/2"
 >
@@ -17,14 +16,14 @@
 		<a
 			href={link.href}
 			transition:fade={{ duration: 150 }}
-			class="flex flex-col items-center gap-1 transition-colors
-        {isLinkActive(link.href)
-				? 'text-green-600 dark:text-green-400'
-				: 'text-gray-500 hover:text-green-400 dark:hover:text-gray-100'}"
+			class="flex flex-col items-center gap-1 transition-colors duration-200 p-1
+    		{isLinkActive(link.href)
+				? 'text-green-600 dark:text-green-400 border-b-2 border-green-500 sm:border-0 sm:no-underline sm:underline-green-500 sm:underline-offset-4'
+				: 'text-gray-500 border-b-2 border-transparent sm:border-0 hover:text-green-400 dark:hover:text-gray-100'}"
 			aria-label={link.name}
 		>
 			<link.icon class="w-6 h-6" />
-			<span class="hidden sm:block text-xs">{link.name}</span>
+			<span class="hidden sm:block text-xs font-medium">{link.name}</span>
 		</a>
 	{/each}
 	<ThemeToggle />
