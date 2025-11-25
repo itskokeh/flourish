@@ -7,7 +7,7 @@ interface PostResponse {
 	post: BlogPost;
 }
 
-export const load: PageServerLoad = async ({ fetch, params }) => {
+export const load: PageServerLoad = async ({ fetch, params, setHeaders }) => {
 	const { slug } = params;
 	const res = await fetch(`${API}/posts/${slug}`);
 	if (!res.ok) {
@@ -22,6 +22,7 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 		console.error('Markdown parse failed', error);
 		htmlContent = '<p>Error loading Content.</p>';
 	}
+	setHeaders({ 'cache-control': 'public, max-age=300, s-maxage=3600' });
 
 	return {
 		post,
