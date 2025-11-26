@@ -10,6 +10,8 @@
 			src={featuredImage}
 			alt="Post Avatar"
 			class="object-cover rounded-t-md sm:rounded-l-sm sm:rounded-t-none sm:min-w-50 h-50 sm:h-full"
+			fetchpriority="high"
+			loading="lazy"
 		/>
 		<div class="p-4 flex flex-col gap-2">
 			<h3>{title}</h3>

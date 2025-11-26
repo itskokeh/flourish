@@ -1,9 +1,9 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	let title = $state('Flourish');
-</script>
+</script> -->
 
 <svelte:head>
-	<title>Kokeh - {title}</title>
+	<title>Kokeh</title>
 	<link
 		rel="preload"
 		as="image"
