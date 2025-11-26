@@ -1,5 +1,6 @@
 <script lang="ts">
 	import PostCard from '$lib/components/PostCard.svelte';
+	import { compressImage } from '$lib/utils/imageCompressor';
 	let { data } = $props();
 	const { posts } = data;
 	// console.log(posts);
@@ -55,7 +56,7 @@
 				excerpt={post.excerpt}
 				tags={post.tags}
 				publishDate={post.publishDate}
-				featuredImage={post.featuredImage}
+				featuredImage={compressImage(post.featuredImage)}
 			/>
 		{/each}
 	</section>
