@@ -15,6 +15,8 @@
 <section class="max-w-3xl flex flex-col gap-4 mx-auto">
 	<div class="flex flex-col justify-center items-center">
 		<img
+			width={800}
+			height={600}
 			src="/theme-script.webp"
 			alt="Screenshot of an app interface"
 			class="object-contain sm:w-6/10 w-full mb-4"
@@ -24,8 +26,8 @@
 		<h2 class="animate-pulse">Kokeh</h2>
 		<p class="italic">Software Engineer</p>
 		<p class="self-center mt-4">
-			I’m Okechukwu Okeke, a full-stack JavaScript developer who builds
-			web applications and writes technical content. I lead both frontend and
+			I’m Okechukwu Okeke, a full-stack JavaScript developer who builds web
+			applications and writes technical content. I lead both frontend and
 			backend teams, contribute to open-source projects, and experiment with
 			privacy-aware tools and serverless architectures. My work focuses on
 			practical problem-solving, clean engineering, and sharing what I learn.
