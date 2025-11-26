@@ -18,6 +18,8 @@
 
 <svelte:head>
 	<title>Kokeh</title>
+	<link rel="preconnect" href="https://wsrv.nl" />
+	<link rel="preconnect" href="https://api.kokeh.xyz" />
 </svelte:head>
 
 <div class="min-h-screen max-w-3xl flex flex-col m-auto">

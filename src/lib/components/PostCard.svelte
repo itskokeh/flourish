@@ -1,27 +1,31 @@
 <script lang="ts">
-	import { Image } from '@unpic/svelte';
 	let { slug, title, excerpt, tags, publishDate, featuredImage } = $props();
 </script>
 
 <div
 	class="flex border-0 rounded-md hover:shadow-lg transition-shadow duration-300 dark:bg-darkMode-card bg-lightMode-card"
 >
-	<a href={`blog/${slug}`} class="flex flex-col sm:flex-row w-full sm:max-h-60">
-		<Image
+	<a
+		href={`blog/${slug}`}
+		class="flex flex-col sm:flex-row h-52 sm:h-56 w-full"
+	>
+		<img
 			src={featuredImage}
 			alt="Post Avatar"
-			width={800}
-			height={600}
-			class="object-cover rounded-t-md sm:rounded-l-sm sm:rounded-t-none sm:min-w-50 h-50 sm:h-full"
 			fetchpriority="high"
 			loading="lazy"
-			layout="constrained"
+			style="object-fit: cover;"
+			class="aspect-[4/5] h-32 sm:h-56"
 		/>
-		<div class="p-4 flex flex-col gap-2">
-			<h3>{title}</h3>
-			<p>{excerpt}</p>
-			<p>Published: {publishDate}</p>
-			<div class="flex flex-wrap items-center gap-2">
+		<div class="p-4 flex flex-col justify-between">
+			<h2
+				class="text-lg sm:text-2xl text-center sm:text-left dark:text-yellow-400 sm:dark:text-white"
+			>
+				{title}
+			</h2>
+			<p class="hidden sm:block">{excerpt}</p>
+			<p class="text-center sm:text-left">{publishDate}</p>
+			<div class="sm:flex sm:flex-wrap items-center gap-2 hidden">
 				{#each tags as tag}
 					<span class="tag">{tag}</span>
 				{/each}

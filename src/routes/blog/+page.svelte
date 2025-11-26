@@ -48,7 +48,7 @@
 		<h1>Blog</h1>
 	</div>
 
-	<section class="grid grid-cols-1 my-4 gap-8">
+	<section class="my-4 gap-2 flex flex-col">
 		{#each posts as post}
 			<PostCard
 				slug={post.slug}

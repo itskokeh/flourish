@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { processedKeywords } from '$lib/utils/postProcessor';
+	import { compressImage } from '$lib/utils/imageCompressor';
 	let { data } = $props();
 	const { post, htmlContent } = data;
 
@@ -30,10 +31,18 @@
 
 <article class="prose dark:prose-invert mx-auto">
 	{#if post}
-		<h1 class="font-bold text-2xl mb-0">{post.title}</h1>
+		<h1 class="mb-0">{post.title}</h1>
 		{#if post.publishDate}
 			<p class="font-bold">
 				Published: {post.publishDate}
+			</p>
+			<p class="font-bold -mt-4">
+				By: <a
+					href="http://x.com/itskokeh"
+					target="_blank"
+					class="font-bold underline-offset-4 hover:dark:text-yellow-400"
+					>Kokeh</a
+				>
 			</p>
 		{/if}
 		{#if post.tags}
@@ -43,7 +52,7 @@
 				{/each}
 			</div>
 		{/if}
-		<img src={post.featuredImage} alt="featured" class="mt-0" />
+		<img src={compressImage(post.featuredImage)} alt="featured" class="mt-0" />
 		{#if htmlContent}
 			{@html htmlContent}
 		{/if}
