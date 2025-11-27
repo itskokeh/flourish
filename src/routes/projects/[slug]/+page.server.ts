@@ -1,6 +1,6 @@
-import { marked } from 'marked';
 import { API } from '$lib/api';
 import type { LabProject } from '$lib/types';
+import { renderMarkdown } from '$lib/utils/markdownRenderer';
 import type { PageServerLoad } from './$types';
 
 interface ProjectResponse {
@@ -17,7 +17,7 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 	const { project }: ProjectResponse = await res.json();
 	let htmlContent: string;
 	try {
-		htmlContent = await marked.parse(project.content);
+		htmlContent = await renderMarkdown(project.content);
 	} catch (error) {
 		console.error('Markdown parse failed', error);
 		htmlContent = '<p>Error loading Content.</p>';
