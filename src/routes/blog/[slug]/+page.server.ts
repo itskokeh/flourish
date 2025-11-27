@@ -1,6 +1,6 @@
-import { marked } from 'marked';
 import { API } from '$lib/api';
 import type { BlogPost } from '$lib/types';
+import { renderMarkdown } from '$lib/utils/markdownRenderer';
 import type { PageServerLoad } from './$types';
 
 interface PostResponse {
@@ -17,7 +17,7 @@ export const load: PageServerLoad = async ({ fetch, params, setHeaders }) => {
 	const { post }: PostResponse = await res.json();
 	let htmlContent: string;
 	try {
-		htmlContent = await marked.parse(post.content);
+		htmlContent = await renderMarkdown(post.content);
 	} catch (error) {
 		console.error('Markdown parse failed', error);
 		htmlContent = '<p>Error loading Content.</p>';
