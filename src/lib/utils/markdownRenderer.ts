@@ -2,6 +2,7 @@ import { fromAsyncCodeToHtml } from '@shikijs/markdown-it/async';
 import markdownAnchor from 'markdown-it-anchor';
 import { MarkdownItAsync } from 'markdown-it-async';
 import { codeToHtml } from 'shiki';
+import darkTheme from 'shiki/themes/vitesse-dark.mjs';
 
 const marked = new MarkdownItAsync({
 	html: true,
@@ -19,8 +20,8 @@ const marked = new MarkdownItAsync({
 	.use(
 		fromAsyncCodeToHtml(codeToHtml, {
 			themes: {
-				light: 'vitesse-dark',
-				dark: 'vitesse-dark'
+				light: darkTheme,
+				dark: darkTheme,
 			},
 		}),
 	);
