@@ -3,6 +3,8 @@ import type { BlogPost } from '$lib/types';
 import { renderMarkdown } from '$lib/utils/markdownRenderer';
 import type { PageServerLoad } from './$types';
 
+const isDev = import.meta.env?.DEV ?? false;
+
 interface PostResponse {
 	post: BlogPost;
 }
@@ -19,13 +21,16 @@ export const load: PageServerLoad = async ({ fetch, params, setHeaders }) => {
 	try {
 		htmlContent = await renderMarkdown(post.content);
 	} catch (error) {
-		console.error('Markdown parse failed', error);
-		htmlContent = '<p>Error loading Content.</p>';
+		console.error('Parsing error:', error);
+		const errorResponse = isDev ? (error as Error).message : 'Failed to load content.';
+		htmlContent = `<p>${errorResponse}</p>`;
 	}
 	setHeaders({ 'cache-control': 'public, max-age=300, s-maxage=3600' });
+	const hasCodeBlocks = htmlContent.includes('<pre') || htmlContent.includes('<code');
 
 	return {
 		post,
 		htmlContent,
+		hasCodeBlocks,
 	};
 };
