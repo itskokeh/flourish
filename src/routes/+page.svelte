@@ -1,6 +1,8 @@
-<!-- <script lang="ts">
-	let title = $state('Flourish');
-</script> -->
+<script lang="ts">
+	import { PostCard, ProjectCard } from '$lib';
+	let { data } = $props();
+	let { posts, projects } = data;
+</script>
 
 <svelte:head>
 	<title>Kokeh</title>
@@ -39,8 +41,17 @@
 			<h3>View my Projects</h3>
 			<a href="/projects" class="hover:underline">View all</a>
 		</div>
-		<div>
-			<!-- TODO: dynamically render content here with a list and conditionals -->
+		<div class="grid md:grid-cols-2 gap-4 my-4 items-stretch">
+			{#each projects as project}
+				<ProjectCard
+					description={project.description}
+					slug={project.slug}
+					featuredImage={project.featuredImage}
+					techStack={project.techStack}
+					title={project.title}
+					tags={project.tags}
+				/>
+			{/each}
 		</div>
 	</section>
 	<section>
@@ -48,8 +59,17 @@
 			<h3>Read my Blog</h3>
 			<a href="/blog" class="hover:underline">View all</a>
 		</div>
-		<div>
-			<!-- TODO: dynamically render content here with a list and conditionals -->
+		<div class="grid md:grid-cols-2 gap-4 my-4 items-stretch">
+			{#each posts as post}
+				<PostCard
+					featuredImage={post.featuredImage}
+					slug={post.slug}
+					title={post.title}
+					publishDate={post.publishDate}
+					excerpt={post.excerpt}
+					tags={post.tags}
+				/>
+			{/each}
 		</div>
 	</section>
 </section>
