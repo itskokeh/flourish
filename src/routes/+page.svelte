@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { PostCard, ProjectCard } from '$lib';
+	import { compressImage } from '$lib/utils/imageCompressor';
 	let { data } = $props();
 	let { posts, projects } = data;
 </script>
@@ -46,7 +47,7 @@
 				<ProjectCard
 					description={project.description}
 					slug={project.slug}
-					featuredImage={project.featuredImage}
+					featuredImage={compressImage(project.featuredImage)}
 					techStack={project.techStack}
 					title={project.title}
 					tags={project.tags}
@@ -62,7 +63,7 @@
 		<div class="grid md:grid-cols-2 gap-4 my-4 items-stretch">
 			{#each posts as post}
 				<PostCard
-					featuredImage={post.featuredImage}
+					featuredImage={compressImage(post.featuredImage)}
 					slug={post.slug}
 					title={post.title}
 					publishDate={post.publishDate}
