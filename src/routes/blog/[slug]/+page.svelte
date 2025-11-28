@@ -1,11 +1,8 @@
 <script lang="ts">
-	// import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import { processedKeywords } from '$lib/utils/postProcessor';
 	import { compressImage } from '$lib/utils/imageCompressor';
-	// import {
-	// 	// hljs,
-	// 	// highlightExistingPreCodeBlocks,
-	// } from '$lib/utils/syntaxHighlighter';
+	import { highlightExistingPreCodeBlocks } from '$lib/utils/syntaxHighlighter';
 	// import 'highlight.js/styles/github-dark.css';
 
 	let { data } = $props();
@@ -13,10 +10,10 @@
 
 	const keywords = processedKeywords(post.keywords);
 
-	// onMount(async () => {
-	// 	// hljs.highlightAll();
-	// 	highlightExistingPreCodeBlocks();
-	// });
+	onMount(async () => {
+		// hljs.highlightAll();
+		setTimeout(highlightExistingPreCodeBlocks, 3000);
+	});
 
 	// console.log('message:', data);
 </script>
@@ -38,10 +35,6 @@
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:title" content={post.metaTitle} />
 		<meta name="twitter:description" content={post.metaDescription} />
-		<!-- <link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
-		/> -->
 	{/if}
 </svelte:head>
 
