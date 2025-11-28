@@ -1,4 +1,4 @@
-import { codeToHtml } from 'shiki/bundle/web';
+const { codeToHtml } = await import ('shiki/bundle/web')
 
 export const highlightExistingPreCodeBlocks = async () => {
 	const pres = document.querySelectorAll('pre');

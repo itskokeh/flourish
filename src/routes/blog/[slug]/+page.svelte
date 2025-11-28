@@ -3,20 +3,17 @@
 	import { processedKeywords } from '$lib/utils/postProcessor';
 	import { compressImage } from '$lib/utils/imageCompressor';
 	import { highlightExistingPreCodeBlocks } from '$lib/utils/syntaxHighlighter';
-	// import 'highlight.js/styles/github-dark.css';
 
 	let { data } = $props();
-	const { post, htmlContent } = data;
+	const { post, htmlContent, hasCodeBlocks } = data;
 
 	const keywords = processedKeywords(post.keywords);
 
 	onMount(async () => {
-		// hljs.highlightAll();
-		requestIdleCallback(() => highlightExistingPreCodeBlocks());
-		// setTimeout(highlightExistingPreCodeBlocks, 5000);
+		if (hasCodeBlocks) {
+			requestIdleCallback(() => highlightExistingPreCodeBlocks());
+		}
 	});
-
-	// console.log('message:', data);
 </script>
 
 <svelte:head>
@@ -39,8 +36,7 @@
 	{/if}
 </svelte:head>
 
-<article class="prose dark:prose-invert mx-auto">
-	<pre><code class="language-svelte">Hello, Svelte!</code></pre>
+<article class="prose dark:prose-invert mx-auto prose-img:w-200">
 	{#if post}
 		<h1 class="mb-0">{post.title}</h1>
 		{#if post.publishDate}
@@ -68,6 +64,7 @@
 			alt="featured"
 			class="mt-0"
 			width="800"
+			height="600"
 		/>
 		{#if htmlContent}
 			{@html htmlContent}
