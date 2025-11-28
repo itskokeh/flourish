@@ -39,6 +39,7 @@
 html {
 	scrollbar-gutter: stable;
 	font-family: 'Tiempos';
+	font-display: swap;
 }
 
 @layer base {
