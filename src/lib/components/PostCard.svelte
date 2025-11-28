@@ -13,7 +13,7 @@
 			src={featuredImage}
 			alt="Post Avatar"
 			fetchpriority="high"
-			loading="lazy"
+			loading="eager"
 			style="object-fit: cover;"
 			class="aspect-[4/5] h-32 sm:h-56 rounded-t-md"
 		/>
