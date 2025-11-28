@@ -13,6 +13,20 @@ const marked = new MarkdownItAsync({
 			.replace(/\s+/g, '-')
 			.replace(/[^\w-]/g, ''),
 });
+marked.renderer.rules.image = (tokens, idx, options, self) => {
+	const token = tokens[idx];
+
+	const { width, height } = getImageDimensions();
+
+	token.attrSet('width', width.toString());
+	token.attrSet('height', height.toString());
+
+	return self.renderToken(tokens, idx, options);
+};
+
+const getImageDimensions = () => {
+	return { width: 800, height: 600 };
+};
 
 export const renderMarkdown = async (md: string) => {
 	return marked.renderAsync(md);
