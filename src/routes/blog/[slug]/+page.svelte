@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	// import { onMount } from 'svelte';
 	import { processedKeywords } from '$lib/utils/postProcessor';
 	import { compressImage } from '$lib/utils/imageCompressor';
 	import {
 		// hljs,
-		highlightExistingPreCodeBlocks,
+		// highlightExistingPreCodeBlocks,
 	} from '$lib/utils/syntaxHighlighter';
 	// import 'highlight.js/styles/github-dark.css';
 
@@ -13,10 +13,10 @@
 
 	const keywords = processedKeywords(post.keywords);
 
-	onMount(async () => {
-		// hljs.highlightAll();
-		highlightExistingPreCodeBlocks()
-	});
+	// onMount(async () => {
+	// 	// hljs.highlightAll();
+	// 	highlightExistingPreCodeBlocks();
+	// });
 
 	// console.log('message:', data);
 </script>
