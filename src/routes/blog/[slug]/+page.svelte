@@ -12,7 +12,8 @@
 
 	onMount(async () => {
 		// hljs.highlightAll();
-		setTimeout(highlightExistingPreCodeBlocks, 3000);
+		requestIdleCallback(() => highlightExistingPreCodeBlocks());
+		// setTimeout(highlightExistingPreCodeBlocks, 5000);
 	});
 
 	// console.log('message:', data);
