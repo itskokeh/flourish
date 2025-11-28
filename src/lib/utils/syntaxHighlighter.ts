@@ -1,45 +1,81 @@
-// import hljs from 'highlight.js/lib/core';
-// // import html from 'highlight.js/lib/languages/html';
-// import javascript from 'highlight.js/lib/languages/javascript';
-// import typescript from 'highlight.js/lib/languages/typescript';
-// import svelte from 'highlight.svelte';
+import type { BundledLanguage } from 'shiki/bundle/web';
 
-// // import {} from 'highlightjs-svelte/'
-
-// hljs.registerLanguage('js', javascript);
-// hljs.registerLanguage('ts', typescript);
-// hljs.registerLanguage('svelte', svelte);
-// // hljs.registerLanguage('html', html);
-
-// export { hljs };
-
-import {
-	// type BundledLanguage,
-	// type BundledTheme,
-	codeToHtml,
-	// createHighlighter,
-} from 'shiki/bundle/web';
-// import vitesse from 'shiki/themes/vitesse-dark.mjs';
-
-export const highlightExistingPreCodeBlocks = async () => {
+export const highlightExistingPreCodeBlocks = async (): Promise<void> => {
 	const pres = document.querySelectorAll('pre');
+	if (pres.length === 0) return;
 
-	for (const pre of pres) {
-		const codeElement = pre.querySelector('code');
-		if (!codeElement) continue;
+	// Show loading state
+	pres.forEach((pre: HTMLPreElement) => {
+		pre.style.opacity = '0.7';
+		const originalHTML = pre.innerHTML;
+		pre.dataset.original = originalHTML;
+		pre.innerHTML = `<code style="color: #666; font-style: italic;">Loading syntax highlighting...</code>`;
+	});
 
-		const code = codeElement.textContent;
-		const lang =
-			Array.from(codeElement.classList)
-				.find((cls) => cls.startsWith('language-'))
-				?.replace('language-', '') || 'javascript';
-
-		const highlighted = await codeToHtml(code, {
-			lang,
-			theme: 'vitesse-dark',
+	try {
+		const worker: Worker = new Worker(new URL('../workers/shikiHighlight.ts', import.meta.url), {
+			type: 'module',
 		});
 
-		// Replace the existing pre with highlighted version
-		pre.outerHTML = highlighted;
+		await processWithWorker(pres, worker);
+	} catch (error) {
+		console.error('Failed to load syntax highlighter:', error);
+		restoreOriginalContent(pres);
 	}
 };
+
+async function processWithWorker(pres: NodeListOf<HTMLPreElement>, worker: Worker): Promise<void> {
+	const promises: Promise<void>[] = Array.from(pres).map((pre: HTMLPreElement, index: number) => {
+		return new Promise<void>((resolve) => {
+			// ← Add <void> generic here
+			const codeElement = pre.querySelector('code') || pre;
+			const code = codeElement.textContent || pre.textContent || '';
+			const langClass =
+				Array.from(pre.classList)
+					.find((cls: string) => cls.startsWith('language-'))
+					?.replace('language-', '') || 'text';
+
+			const request = {
+				code,
+				lang: langClass as BundledLanguage,
+				id: index,
+			};
+
+			worker.postMessage(request);
+
+			const handleMessage = (event: MessageEvent) => {
+				if (event.data.id === index) {
+					if (event.data.success) {
+						pre.outerHTML = event.data.html;
+					} else {
+						console.warn('Highlight failed:', event.data.error);
+						restorePreContent(pre);
+					}
+					worker.removeEventListener('message', handleMessage);
+					resolve(); // ← This is fine now with Promise<void>
+				}
+			};
+
+			worker.addEventListener('message', handleMessage);
+		});
+	});
+
+	await Promise.all(promises);
+	worker.terminate();
+}
+
+function restoreOriginalContent(pres: NodeListOf<HTMLPreElement>): void {
+	pres.forEach((pre: HTMLPreElement) => {
+		pre.style.opacity = '1';
+		if (pre.dataset.original) {
+			pre.innerHTML = pre.dataset.original;
+		}
+	});
+}
+
+function restorePreContent(pre: HTMLPreElement): void {
+	pre.style.opacity = '1';
+	if (pre.dataset.original) {
+		pre.innerHTML = pre.dataset.original;
+	}
+}
