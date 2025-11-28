@@ -1,10 +1,22 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { processedKeywords } from '$lib/utils/postProcessor';
 	import { compressImage } from '$lib/utils/imageCompressor';
+	import {
+		// hljs,
+		highlightExistingPreCodeBlocks,
+	} from '$lib/utils/syntaxHighlighter';
+	// import 'highlight.js/styles/github-dark.css';
+
 	let { data } = $props();
 	const { post, htmlContent } = data;
 
 	const keywords = processedKeywords(post.keywords);
+
+	onMount(async () => {
+		// hljs.highlightAll();
+		highlightExistingPreCodeBlocks()
+	});
 
 	// console.log('message:', data);
 </script>
@@ -26,10 +38,15 @@
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:title" content={post.metaTitle} />
 		<meta name="twitter:description" content={post.metaDescription} />
+		<!-- <link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+		/> -->
 	{/if}
 </svelte:head>
 
 <article class="prose dark:prose-invert mx-auto">
+	<pre><code class="language-svelte">Hello, Svelte!</code></pre>
 	{#if post}
 		<h1 class="mb-0">{post.title}</h1>
 		{#if post.publishDate}
@@ -52,7 +69,12 @@
 				{/each}
 			</div>
 		{/if}
-		<img src={compressImage(post.featuredImage, 800, 600)} alt="featured" class="mt-0" width="800" />
+		<img
+			src={compressImage(post.featuredImage, 800, 600)}
+			alt="featured"
+			class="mt-0"
+			width="800"
+		/>
 		{#if htmlContent}
 			{@html htmlContent}
 		{/if}
