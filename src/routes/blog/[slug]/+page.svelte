@@ -2,10 +2,10 @@
 	// import { onMount } from 'svelte';
 	import { processedKeywords } from '$lib/utils/postProcessor';
 	import { compressImage } from '$lib/utils/imageCompressor';
-	import {
-		// hljs,
-		// highlightExistingPreCodeBlocks,
-	} from '$lib/utils/syntaxHighlighter';
+	// import {
+	// 	// hljs,
+	// 	// highlightExistingPreCodeBlocks,
+	// } from '$lib/utils/syntaxHighlighter';
 	// import 'highlight.js/styles/github-dark.css';
 
 	let { data } = $props();
