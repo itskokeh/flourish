@@ -4,11 +4,12 @@
  */
 export { default as Footer } from './components/Footer.svelte';
 export { default as Navbar } from './components/Navbar.svelte';
+export { default as PostCard } from './components/PostCard.svelte';
+export { default as ProjectCard } from './components/ProjectCard.svelte';
 export { default as ThemeToggle } from './components/ThemeToggle.svelte';
-export {default as ProjectCard} from './components/ProjectCard.svelte'
 /**
  * UI Icons
-*/
+ */
 export { default as Blog } from './ui/Blog.svelte';
 export { default as Email } from './ui/Email.svelte';
 export { default as GitHub } from './ui/GitHub.svelte';
