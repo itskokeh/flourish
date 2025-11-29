@@ -25,18 +25,21 @@
 		href="/fonts/TestTiemposText-Regular-BF66457a50cd521.otf"
 		as="font"
 		type="font/otf"
+		crossorigin="anonymous"
 	/>
 	<link
 		rel="preload"
 		href="/fonts/TestTiemposText-RegularItalic-BF66457a50421c2.otf"
 		as="font"
 		type="font/otf"
+		crossorigin="anonymous"
 	/>
 	<link
 		rel="preload"
 		href="/fonts/TestTiemposHeadline-Bold-BF66457a5113d17.otf"
 		as="font"
 		type="font/otf"
+		crossorigin="anonymous"
 	/>
 </svelte:head>
 
