@@ -6,7 +6,7 @@
 </script>
 
 <div
-	class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-4"
+	class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-4 -m-4"
 >
 	<div class="max-w-2xl w-full">
 		<!-- Error Code -->
