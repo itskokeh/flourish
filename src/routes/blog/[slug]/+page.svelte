@@ -59,7 +59,15 @@
 				{/each}
 			</div>
 		{/if}
-		<img src={compressImage(post.featuredImage, 800, 600)} alt="featured" class="mt-0" width="800" />
+		<img
+			src={compressImage(post.featuredImage, 800, 600)}
+			alt="featured"
+			class="mt-0"
+			width="800"
+			height="600"
+			fetchpriority="high"
+			loading="eager"
+		/>
 		{#if htmlContent}
 			{@html htmlContent}
 		{/if}
