@@ -15,9 +15,9 @@
 			class="aspect-[4/5] h-32 sm:h-56 rounded-t-md"
 		/>
 		<div class="p-4 flex flex-col justify-between gap-4 h-full">
-			<h3 class="dark:text-yellow-400">
+			<h2 class="dark:text-yellow-400 text-xl">
 				{title}
-			</h3>
+			</h2>
 			<p class="hidden sm:block">{excerpt}</p>
 			<p>{publishDate}</p>
 			<div class="sm:flex sm:flex-wrap items-center gap-2 hidden">
