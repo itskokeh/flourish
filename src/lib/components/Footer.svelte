@@ -15,7 +15,7 @@
 		<a
 			href="http://x.com/itskokeh"
 			target="_blank"
-			referrerpolicy="no-referrer"
+			rel="noopener noreferrer"
 			aria-label="link to Twitter account"
 			class="flex items-center"
 		>
@@ -26,7 +26,7 @@
 		<a
 			href="http://github.com/itskokeh"
 			target="_blank"
-			referrerpolicy="no-referrer"
+			rel="noopener noreferrer"
 			aria-label="link to GitHub account"
 			class="flex items-center"
 		>
@@ -46,7 +46,7 @@
 		<a
 			href="http://t.me/itskokeh"
 			target="_blank"
-			referrerpolicy="no-referrer"
+			rel="noopener noreferrer"
 			aria-label="link to Telegram account"
 			class="flex items-center"
 		>
