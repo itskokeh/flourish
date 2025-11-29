@@ -1,24 +1,28 @@
-const { codeToHtml } = await import ('shiki/bundle/web')
+const { codeToHtml } = await import('shiki/bundle/web');
 
 export const highlightExistingPreCodeBlocks = async () => {
-	const pres = document.querySelectorAll('pre');
+	const pres = Array.from(document.querySelectorAll('pre'));
 
-	for (const pre of pres) {
-		const codeElement = pre.querySelector('code');
-		if (!codeElement) continue;
+	await Promise.all(
+		pres.map(async (pre) => {
+			const codeElement = pre.querySelector('code');
+			if (!codeElement) return;
 
-		const code = codeElement.textContent;
-		const lang =
-			Array.from(codeElement.classList)
-				.find((cls) => cls.startsWith('language-'))
-				?.replace('language-', '') || 'javascript';
+			const code = codeElement.textContent || '';
+			const lang =
+				Array.from(codeElement.classList)
+					.find((cls) => cls.startsWith('language-'))
+					?.replace('language-', '') || 'javascript';
 
-		const highlighted = await codeToHtml(code, {
-			lang,
-			theme: 'vitesse-dark',
-		});
+			const highlighted = await codeToHtml(code, { lang, theme: 'vitesse-dark' });
 
-		// Replace the existing pre with highlighted version
-		pre.outerHTML = highlighted;
-	}
+			// Create a temporary container to extract only the inner HTML
+			const tmp = document.createElement('div');
+			tmp.innerHTML = highlighted;
+
+			// Replace only the code element's innerHTML
+			codeElement.innerHTML = tmp.querySelector('code')?.innerHTML || '';
+			codeElement.className = tmp.querySelector('code')?.className || '';
+		}),
+	);
 };

@@ -20,6 +20,27 @@
 	<title>Kokeh</title>
 	<link rel="preconnect" href="https://wsrv.nl" />
 	<link rel="preconnect" href="https://api.kokeh.xyz" />
+	<link
+		rel="preload"
+		href="/fonts/TestTiemposText-Regular-BF66457a50cd521.otf"
+		as="font"
+		type="font/otf"
+		crossorigin="anonymous"
+	/>
+	<link
+		rel="preload"
+		href="/fonts/TestTiemposText-RegularItalic-BF66457a50421c2.otf"
+		as="font"
+		type="font/otf"
+		crossorigin="anonymous"
+	/>
+	<link
+		rel="preload"
+		href="/fonts/TestSohne-Halbfett-BF663d89cd2d67b.otf"
+		as="font"
+		type="font/otf"
+		crossorigin="anonymous"
+	/>
 </svelte:head>
 
 <div class="min-h-screen max-w-3xl flex flex-col m-auto">
