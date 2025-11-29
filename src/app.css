@@ -16,6 +16,30 @@
 	--color-lightMode-card: #F3F4F6;
 }
 
+@font-face {
+	font-family: 'Tiempos';
+	src: url('/fonts/TestTiemposText-Regular-BF66457a50cd521.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Tiempos';
+	src: url('/fonts/TestTiemposHeadline-Bold-BF66457a5113d17.otf') format('opentype');
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Tiempos';
+	src: url('/fonts/TestTiemposText-RegularItalic-BF66457a50421c2.otf') format('opentype');
+	font-weight: normal;
+	font-style: italic;
+	font-display: swap;
+}
+
 html {
 	scrollbar-gutter: stable;
 	font-family: 'Tiempos';
