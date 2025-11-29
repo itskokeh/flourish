@@ -12,15 +12,12 @@ export { default as ThemeToggle } from './components/ThemeToggle.svelte';
  */
 export { default as Blog } from './ui/Blog.svelte';
 export { default as Email } from './ui/Email.svelte';
-export { default as GitHub } from './ui/GitHub.svelte';
 export { default as Heart } from './ui/Heart.svelte';
 export { default as Home } from './ui/Home.svelte';
 export { default as LinkedIn } from './ui/LinkedIn.svelte';
 export { default as Moon } from './ui/Moon.svelte';
 export { default as Projects } from './ui/Projects.svelte';
 export { default as Sun } from './ui/Sun.svelte';
-export { default as Twitter } from './ui/Twitter.svelte';
-
 /**
  * Utilities
  */
