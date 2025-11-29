@@ -66,7 +66,7 @@
 			/>
 		</a>
 	</div>
-	<p class="flex justify-center">
+	<p class="flex justify-center font-bold">
 		With
 		<span class="ml-1 mr-1 self-center">
 			<Heart style="w-4 h-4" />
