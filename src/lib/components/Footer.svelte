@@ -62,7 +62,7 @@
 			class="flex items-center"
 		>
 			<LinkedIn
-				class="w-10 h-10 dark:text-gray-300 dark:hover:text-gray-400 hover:text-gray-800 text-black"
+				class="w-9 h-9 dark:text-gray-300 dark:hover:text-gray-400 hover:text-gray-800 text-black"
 			/>
 		</a>
 	</div>

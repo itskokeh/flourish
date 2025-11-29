@@ -36,7 +36,7 @@
 	/>
 	<link
 		rel="preload"
-		href="/fonts/TestTiemposHeadline-Bold-BF66457a5113d17.otf"
+		href="/fonts/TestSohne-Halbfett-BF663d89cd2d67b.otf"
 		as="font"
 		type="font/otf"
 		crossorigin="anonymous"
