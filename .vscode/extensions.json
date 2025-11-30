@@ -1,6 +1,8 @@
 {
   "recommendations": [
     "biomejs.biome",
-    "svelte.svelte-vscode"
+    "svelte.svelte-vscode",
+		"esbenp.prettier-vscode",
+		"bradlc.vscode-tailwindcss"
   ]
 }
