@@ -67,3 +67,8 @@ html {
 		@apply px-3 py-1 rounded-sm text-sm font-medium bg-lightMode-accent text-darkMode-text dark:bg-darkMode-accent dark:text-lightMode-text;
 	}
 }
+
+.prose code::before,
+.prose code::after {
+	content: none !important;
+}
