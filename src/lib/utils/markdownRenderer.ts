@@ -2,7 +2,7 @@ import markdownAnchor from 'markdown-it-anchor';
 import { MarkdownItAsync } from 'markdown-it-async';
 
 const marked = new MarkdownItAsync({
-	html: true,
+	html: false,
 	linkify: true,
 	typographer: true,
 }).use(markdownAnchor, {
@@ -13,7 +13,7 @@ const marked = new MarkdownItAsync({
 			.replace(/\s+/g, '-')
 			.replace(/[^\w-]/g, ''),
 });
-marked.renderer.rules.image = (tokens, idx, options, env, self) => {
+marked.renderer.rules.image = (tokens, idx, options, _env, self) => {
 	const token = tokens[idx];
 
 	const { width, height } = getImageDimensions();

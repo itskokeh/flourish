@@ -6,19 +6,20 @@
 	--color-light: white;
 	--color-primary: rgb(156, 163, 175);
 	--color-secondary: yellow;
-	--color-darkMode-bg: #191A1D;
-	--color-lightMode-bg: #DCECEC;
+	--color-darkMode-bg: #191a1d;
+	--color-lightMode-bg: #dcecec;
 	--color-darkMode-text: #ffffff;
 	--color-lightMode-text: #000000;
 	--color-lightMode-accent: #320236;
-	--color-darkMode-accent: #CCE1F5;
+	--color-darkMode-accent: #cce1f5;
 	--color-darkMode-card: #212225;
-	--color-lightMode-card: #F3F4F6;
+	--color-lightMode-card: #f3f4f6;
 }
 
 @font-face {
 	font-family: 'Tiempos';
-	src: url('/fonts/TestTiemposText-Regular-BF66457a50cd521.otf') format('opentype');
+	src: url('/fonts/TestTiemposText-Regular-BF66457a50cd521.otf')
+		format('opentype');
 	font-weight: normal;
 	font-style: normal;
 	font-display: swap;
@@ -34,7 +35,8 @@
 
 @font-face {
 	font-family: 'Tiempos';
-	src: url('/fonts/TestTiemposText-RegularItalic-BF66457a50421c2.otf') format('opentype');
+	src: url('/fonts/TestTiemposText-RegularItalic-BF66457a50421c2.otf')
+		format('opentype');
 	font-weight: normal;
 	font-style: italic;
 	font-display: swap;
@@ -42,26 +44,52 @@
 
 html {
 	scrollbar-gutter: stable;
-	font-family: 'Tiempos';
+	font-family: 'Tiempos', system-ui;
 }
 
 @layer base {
 	html {
-		@apply dark:bg-darkMode-bg bg-lightMode-bg text-lightMode-text dark:text-darkMode-text p-0 m-0
+		@apply dark:bg-darkMode-bg bg-lightMode-bg text-lightMode-text dark:text-darkMode-text p-0 m-0;
 	}
 	h1 {
-		@apply font-bold text-3xl
+		@apply font-bold text-3xl;
 	}
 	h2 {
-		@apply text-2xl font-bold
+		@apply text-2xl font-bold;
 	}
 	h3 {
-		@apply text-xl font-bold
+		@apply text-xl font-bold;
 	}
 }
 
 @layer components {
 	.tag {
-		@apply px-3 py-1 rounded-sm text-sm font-medium bg-lightMode-accent text-darkMode-text dark:bg-darkMode-accent dark:text-lightMode-text
+		@apply px-3 py-1 rounded-sm text-sm font-medium bg-lightMode-accent text-darkMode-text dark:bg-darkMode-accent dark:text-lightMode-text;
 	}
+}
+
+.prose code::before,
+.prose code::after {
+	content: '' !important;
+}
+
+.prose code {
+	background-color: rgba(156, 163, 175, 0.5);
+	border-radius: 0.25rem;
+	padding: 0.125rem 0.375rem;
+	font-size: 0.875em;
+	font-weight: 400;
+}
+
+.prose.dark code,
+.dark .prose code {
+	background-color: oklch(0.27 0.04 260 / 0.8);
+	color: oklch(0.92 0.02 260);
+}
+
+.prose pre code,
+.dark .prose pre code {
+	background-color: transparent;
+	padding: 0;
+	font-size: 100%;
 }
