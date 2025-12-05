@@ -26,7 +26,7 @@
 			fetchpriority="high"
 			loading="eager"
 		/>
-		<h2 class="animate-pulse">Kokeh</h2>
+		<h1 class="animate-pulse">Kokeh</h1>
 		<p class="italic">Software Engineer</p>
 		<p class="self-center mt-4">
 			I’m Okechukwu Okeke, a full-stack JavaScript developer who builds web
