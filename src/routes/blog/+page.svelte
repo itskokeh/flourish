@@ -48,13 +48,11 @@
 		<h1>Blog</h1>
 	</div>
 
-	<section class="grid md:grid-cols-2 gap-4 my-4">
+	<section class="flex flex-col gap-4 my-4">
 		{#each posts as post}
 			<PostCard
 				slug={post.slug}
 				title={post.title}
-				excerpt={post.excerpt}
-				tags={post.tags}
 				publishDate={post.publishDate}
 				featuredImage={compressImage(post.featuredImage)}
 			/>

@@ -26,7 +26,7 @@
 			fetchpriority="high"
 			loading="eager"
 		/>
-		<h2 class="animate-pulse">Kokeh</h2>
+		<h1 class="animate-pulse">Kokeh</h1>
 		<p class="italic">Software Engineer</p>
 		<p class="self-center mt-4">
 			I’m Okechukwu Okeke, a full-stack JavaScript developer who builds web
@@ -60,15 +60,13 @@
 			<h3>Read my Blog</h3>
 			<a href="/blog" class="hover:underline">View all</a>
 		</div>
-		<div class="grid md:grid-cols-2 gap-4 my-4 items-stretch">
+		<div class="flex flex-col gap-4 my-4">
 			{#each posts as post}
 				<PostCard
 					featuredImage={compressImage(post.featuredImage)}
 					slug={post.slug}
 					title={post.title}
 					publishDate={post.publishDate}
-					excerpt={post.excerpt}
-					tags={post.tags}
 				/>
 			{/each}
 		</div>
