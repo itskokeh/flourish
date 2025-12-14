@@ -1,74 +1,84 @@
 <script lang="ts">
-	import { PostCard, ProjectCard } from '$lib';
-	import { compressImage } from '$lib/utils/imageCompressor';
-	let { data } = $props();
-	let { posts, projects } = data;
+  import { PostCard, ProjectCard } from '$lib';
+  import { socialLinks } from '$lib/utils/socialLinks';
+  import { compressImage } from '$lib/utils/imageCompressor';
+
+  let { data } = $props();
+  let { posts, projects } = data;
 </script>
 
 <svelte:head>
-	<title>Kokeh</title>
-	<link
-		rel="preload"
-		as="image"
-		href="/theme-script.webp"
-		fetchpriority="high"
-	/>
+  <title>Kokeh | Software Engineer</title>
 </svelte:head>
 
-<section class="max-w-3xl flex flex-col gap-4 mx-auto">
-	<div class="flex flex-col justify-center items-center">
-		<img
-			width={800}
-			height={600}
-			src="/theme-script.webp"
-			alt="Screenshot of an app interface"
-			class="object-contain sm:w-6/10 w-full mb-4"
-			fetchpriority="high"
-			loading="eager"
-		/>
-		<h1 class="animate-pulse">Kokeh</h1>
-		<p class="italic">Software Engineer</p>
-		<p class="self-center mt-4">
-			I’m Okechukwu Okeke, a full-stack JavaScript developer who builds web
-			applications and writes technical content. I lead both frontend and
-			backend teams, contribute to open-source projects, and experiment with
-			privacy-aware tools and serverless architectures. My work focuses on
-			practical problem-solving, clean engineering, and sharing what I learn.
-		</p>
-	</div>
+<div class="flex flex-col gap-20 pt-8 pb-10">
 
-	<section>
-		<div class="flex justify-between">
-			<h3>View my Projects</h3>
-			<a href="/projects" class="hover:underline">View all</a>
-		</div>
-		<div class="grid md:grid-cols-2 gap-4 my-4 items-stretch">
-			{#each projects as project}
-				<ProjectCard
-					description={project.description}
-					slug={project.slug}
-					featuredImage={compressImage(project.featuredImage)}
-					techStack={project.techStack}
-					title={project.title}
-					tags={project.tags}
-				/>
-			{/each}
-		</div>
-	</section>
-	<section>
-		<div class="flex justify-between">
-			<h3>Read my Blog</h3>
-			<a href="/blog" class="hover:underline">View all</a>
-		</div>
-		<div class="flex flex-col gap-4 my-4">
-			{#each posts as post}
-				<PostCard
-					featuredImage={compressImage(post.featuredImage)}
-					slug={post.slug}
-					title={post.title}
-					publishDate={post.publishDate}
-				/>
-			{/each}
-		</div>
-	</section>
-</section>
+  <section class="space-y-6">
+    <div class="space-y-2">
+      <h1 class="text-5xl sm:text-7xl font-bold text-lightMode-text dark:text-white tracking-tighter">
+        Kokeh
+      </h1>
+      <p class="text-xl sm:text-2xl text-lightMode-accent dark:text-darkMode-accent italic">
+        Software Engineer & Writer
+      </p>
+    </div>
+
+    <p class="text-lg leading-relaxed text-opacity-90 max-w-xl">
+      I’m Okechukwu Okeke. I build robust full-stack applications and write about the engineering behind them.
+      Currently leading teams, contributing to open-source, and experimenting with serverless architectures.
+    </p>
+
+    <div class="flex gap-5 items-center">
+      {#each socialLinks as { url, component: Icon, ariaLabel }}
+        <a
+          href={url}
+          aria-label={ariaLabel}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gray-500 hover:text-lightMode-accent dark:text-gray-400 dark:hover:text-darkMode-accent transition-colors duration-200"
+        >
+          <Icon class="w-6 h-6" />
+        </a>
+      {/each}
+    </div>
+  </section>
+
+  <section class="space-y-6">
+    <div class="flex justify-between items-baseline border-b border-gray-200 dark:border-gray-800 pb-2">
+      <h2 class="text-2xl font-bold">Selected Projects</h2>
+      <a href="/projects" class="text-sm font-medium hover:text-lightMode-accent dark:hover:text-darkMode-accent transition-colors">View all →</a>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      {#each projects as project}
+        <ProjectCard
+          slug={project.slug}
+          title={project.title}
+          description={project.description}
+          techStack={project.techStack}
+          tags={project.tags}
+          featuredImage={compressImage(project.featuredImage)}
+        />
+      {/each}
+    </div>
+  </section>
+
+  <section class="space-y-6">
+    <div class="flex justify-between items-baseline border-b border-gray-200 dark:border-gray-800 pb-2">
+      <h2 class="text-2xl font-bold">Latest Writing</h2>
+      <a href="/blog" class="text-sm font-medium hover:text-lightMode-accent dark:hover:text-darkMode-accent transition-colors">View all →</a>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      {#each posts as post}
+        <PostCard
+          slug={post.slug}
+          title={post.title}
+          publishDate={post.publishDate}
+          featuredImage={compressImage(post.featuredImage)}
+        />
+      {/each}
+    </div>
+  </section>
+
+</div>
