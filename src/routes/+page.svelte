@@ -6,7 +6,6 @@
 	let { data } = $props();
 	let { posts, projects } = data;
 
-	// --- SEO CONFIGURATION ---
 	const siteTitle = 'Okechukwu Okeke | Software Engineer & Writer';
 	const metaDescription =
 		'I’m Okechukwu Okeke (Kokeh). A full-stack software engineer and writer building robust web applications, leading teams, and contributing to open-source.';
@@ -68,6 +67,18 @@
 			to open-source, and experimenting with serverless architectures.
 		</p>
 
+		<a
+			href="/cv.pdf"
+			download="Okechukwu_Okeke_CV.pdf"
+			class="
+          inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-sm tracking-wide uppercase
+          bg-lightMode-text text-white dark:bg-white dark:text-black
+          hover:bg-lightMode-accent dark:hover:bg-darkMode-accent hover:text-white dark:hover:text-black
+          transition-all duration-200 w-fit shadow-md
+        "
+		>
+			<span class="w-4 h-4">↓</span> Download CV
+		</a>
 		<div class="flex gap-5 items-center">
 			{#each socialLinks as { url, component: Icon, ariaLabel }}
 				<a
