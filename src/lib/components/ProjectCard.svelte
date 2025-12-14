@@ -2,28 +2,53 @@
 	let { slug, title, description, tags, featuredImage, techStack } = $props();
 </script>
 
-<div
-	class="flex border-0 rounded-md hover:shadow-lg transition-shadow duration-300 dark:bg-darkMode-card bg-lightMode-card"
+<article
+	class="group flex flex-col sm:flex-row w-full rounded-xl overflow-hidden
+  bg-lightMode-card dark:bg-darkMode-card
+  border border-gray-200 dark:border-gray-800
+  hover:shadow-xl hover:border-lightMode-accent/30 dark:hover:border-darkMode-accent/30
+  transition-all duration-300 ease-out"
 >
-	<a href={`projects/${slug}`} class="flex flex-col sm:flex-row w-full sm:h-48">
-		<img
-			src={featuredImage}
-			alt="Project Preview"
-			class="object-cover rounded-t-md sm:rounded-l-sm sm:rounded-t-none h-60 sm:h-48"
-		/>
-		<div class="p-4 flex flex-col gap-2">
-			<h3>{title}</h3>
-			<p>{description}</p>
-			<div class="flex flex-wrap items-center gap-2">
+	<a href={`projects/${slug}`} class="flex flex-col sm:flex-row w-full">
+		<div
+			class="w-full sm:w-48 sm:shrink-0 h-48 sm:h-auto relative overflow-hidden"
+		>
+			<img
+				src={featuredImage}
+				alt={title}
+				class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+			/>
+		</div>
+
+		<div class="p-5 flex flex-col gap-3 flex-grow">
+			<div>
+				<h3
+					class="text-xl font-bold text-lightMode-text dark:text-white group-hover:text-lightMode-accent dark:group-hover:text-darkMode-accent transition-colors"
+				>
+					{title}
+				</h3>
+				<p
+					class="text-gray-600 dark:text-gray-300 text-sm mt-1 leading-relaxed line-clamp-2"
+				>
+					{description}
+				</p>
+			</div>
+
+			<div class="flex flex-wrap items-center gap-2 mt-auto">
 				{#each techStack as tech}
 					<span class="tag">{tech}</span>
 				{/each}
 			</div>
-			<div class="flex flex-wrap items-center gap-2">
-				{#each tags as tag}
-					<span class="tag">{tag}</span>
-				{/each}
-			</div>
+
+			{#if tags && tags.length > 0}
+				<div
+					class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-gray-400"
+				>
+					{#each tags as tag}
+						<span>#{tag}</span>
+					{/each}
+				</div>
+			{/if}
 		</div>
 	</a>
-</div>
+</article>

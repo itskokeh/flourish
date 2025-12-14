@@ -2,23 +2,37 @@
 	let { slug, title, publishDate, featuredImage } = $props();
 </script>
 
-<div
-	class="flex border-0 rounded-md hover:shadow-lg transition-shadow duration-300 hover:dark:bg-darkMode-card hover:bg-lightMode-card h-24 bg-inherit sm:p-4"
->
-	<a href={`blog/${slug}`} class="flex w-full">
-		<img
-			src={featuredImage}
-			alt="Post Avatar"
-			fetchpriority="high"
-			loading="eager"
-			style="object-fit: cover;"
-			class="aspect-[4/5] sm:h-full h-8/10 w-24"
-		/>
-		<div class="flex flex-col sm:gap-2 sm:pl-3 pl-2 h-full">
-			<h2 class="dark:text-yellow-400 sm:text-xl text-lg">
+<article class="group w-full">
+	<a
+		href={`blog/${slug}`}
+		class="flex items-start gap-4 p-3 -mx-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900/50 transition-colors duration-200"
+	>
+		<div
+			class="shrink-0 w-24 h-24 sm:w-28 sm:h-20 rounded-lg overflow-hidden shadow-sm border border-gray-200 dark:border-gray-700"
+		>
+			<img
+				src={featuredImage}
+				alt={title}
+				class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+				fetchpriority="high"
+				loading="eager"
+			/>
+		</div>
+
+		<div class="flex flex-col justify-center h-full gap-1">
+			<h2
+				class="text-lg sm:text-xl font-bold leading-tight text-lightMode-text dark:text-white group-hover:text-lightMode-accent dark:group-hover:text-darkMode-accent transition-colors"
+			>
 				{title}
 			</h2>
-			<p class="text-xs">{publishDate}</p>
+
+			{#if publishDate}
+				<time
+					class="text-xs font-medium text-gray-500 dark:text-gray-400 tracking-wide uppercase"
+				>
+					{publishDate}
+				</time>
+			{/if}
 		</div>
 	</a>
-</div>
+</article>

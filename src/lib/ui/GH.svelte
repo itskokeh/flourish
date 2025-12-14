@@ -1,9 +1,19 @@
+<script lang="ts">
+	import type { SVGAttributes } from 'svelte/elements';
+	type Props = {
+		class?: string;
+		[key: string]: any;
+	} & SVGAttributes<SVGElement>;
+	let { class: classname, ...rest }: Props = $props();
+</script>
+
 <svg
+	{...rest}
 	xmlns="http://www.w3.org/2000/svg"
 	width="448"
 	height="512"
 	viewBox="0 0 448 512"
-	{...$$props}
+	class={classname}
 >
 	<path
 		fill="currentColor"

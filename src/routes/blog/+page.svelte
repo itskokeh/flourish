@@ -1,12 +1,13 @@
 <script lang="ts">
 	import PostCard from '$lib/components/PostCard.svelte';
 	import { compressImage } from '$lib/utils/imageCompressor';
+
 	let { data } = $props();
 	const { posts } = data;
-	// console.log(posts);
 
 	const pageDescription =
 		'For builders and founders. Code that works, lessons that matter, and a life well-lived';
+
 	const jsonLd = {
 		'@context': 'https://schema.org',
 		'@type': 'Blog',
@@ -23,39 +24,47 @@
 		})),
 	};
 	const jsonLdString = JSON.stringify(jsonLd);
-	// console.log(jsonLdString);
 </script>
 
 <svelte:head>
 	<title>Kokeh - Blog</title>
 	<meta name="description" content={pageDescription} />
 
-	<!-- Open Graph -->
 	<meta property="og:title" content="Kokeh - Blog" />
 	<meta property="og:description" content={pageDescription} />
 	<meta property="og:type" content="website" />
 
-	<!-- Twitter Card -->
 	<meta name="twitter:name" content="Kokeh - Blog" />
 	<meta name="twitter:description" content={pageDescription} />
 
-	<!-- GEO: Structured data for AI -->
 	{@html `<script type="application/ld+json">${jsonLdString}</script>`}
 </svelte:head>
 
-<section class="mx-auto max-w-3xl">
-	<div>
-		<h1>Blog</h1>
-	</div>
+<section class="py-20">
+	<header class="mb-16 space-y-6">
+		<h1
+			class="text-5xl font-bold tracking-tight text-lightMode-text dark:text-white"
+		>
+			Writing
+		</h1>
+		<p
+			class="text-xl text-lightMode-accent dark:text-darkMode-accent italic leading-relaxed max-w-xl"
+		>
+			{pageDescription}
+		</p>
+		<div class="h-px w-20 bg-gray-200 dark:bg-gray-800 mt-8"></div>
+	</header>
 
-	<section class="flex flex-col gap-4 my-4">
+	<section class="flex flex-col gap-8">
 		{#each posts as post}
-			<PostCard
-				slug={post.slug}
-				title={post.title}
-				publishDate={post.publishDate}
-				featuredImage={compressImage(post.featuredImage)}
-			/>
+			<article class="group relative transition-opacity hover:opacity-100">
+				<PostCard
+					slug={post.slug}
+					title={post.title}
+					publishDate={post.publishDate}
+					featuredImage={compressImage(post.featuredImage)}
+				/>
+			</article>
 		{/each}
 	</section>
 </section>

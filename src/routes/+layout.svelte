@@ -44,7 +44,7 @@
 </svelte:head>
 
 <div class="min-h-screen max-w-3xl flex flex-col m-auto">
-	<main class="flex-grow p-4">
+	<main class="flex-grow px-5 py-6 sm:px-0">
 		{@render children()}
 	</main>
 	<Footer />
