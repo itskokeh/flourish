@@ -3,32 +3,31 @@
 @custom-variant dark (&:where(.dark, .dark *));
 @theme {
 	--color-dark: #09090b;
-	--color-light: white;
+	--color-light: #ffffff;
 	--color-primary: rgb(156, 163, 175);
-	--color-secondary: yellow;
-	--color-darkMode-bg: #191a1d;
-	--color-lightMode-bg: #dcecec;
-	--color-darkMode-text: #ffffff;
-	--color-lightMode-text: #000000;
-	--color-lightMode-accent: #320236;
-	--color-darkMode-accent: #cce1f5;
-	--color-darkMode-card: #212225;
-	--color-lightMode-card: #f3f4f6;
+	--color-secondary: #fbbf24;
+
+	--color-lightMode-bg: #fdfbf7;
+	--color-darkMode-bg: #09090b;
+
+	--color-lightMode-text: #1c1917;
+	--color-darkMode-text: #e4e4e7;
+
+	--color-lightMode-accent: #c2410c;
+	--color-darkMode-accent: #fb923c;
+
+	--color-lightMode-card: #ffffff;
+	--color-darkMode-card: #18181b;
+
+	--font-serif: 'Tiempos', serif;
+	--font-sans: 'Sohne', sans-serif;
 }
 
 @font-face {
 	font-family: 'Tiempos';
 	src: url('/fonts/TestTiemposText-Regular-BF66457a50cd521.otf')
 		format('opentype');
-	font-weight: normal;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'Tiempos';
-	src: url('/fonts/TestSohne-Halbfett-BF663d89cd2d67b.otf') format('opentype');
-	font-weight: bold;
+	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
 }
@@ -37,35 +36,70 @@
 	font-family: 'Tiempos';
 	src: url('/fonts/TestTiemposText-RegularItalic-BF66457a50421c2.otf')
 		format('opentype');
-	font-weight: normal;
+	font-weight: 400;
 	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Sohne';
+	src: url('/fonts/TestSohne-Halbfett-BF663d89cd2d67b.otf') format('opentype');
+	font-weight: 700;
+	font-style: normal;
 	font-display: swap;
 }
 
 html {
 	scrollbar-gutter: stable;
-	font-family: 'Tiempos', system-ui;
+	/* Set Body to Tiempos (Serif) */
+	font-family: 'Tiempos', serif;
 }
 
 @layer base {
 	html {
-		@apply dark:bg-darkMode-bg bg-lightMode-bg text-lightMode-text dark:text-darkMode-text p-0 m-0;
+		@apply dark:bg-darkMode-bg bg-lightMode-bg text-lightMode-text dark:text-darkMode-text p-0 m-0 transition-colors duration-300;
 	}
+
+	/* Set Headings to Sohne (Sans) */
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: 'Sohne', sans-serif;
+		@apply font-bold tracking-tight;
+	}
+
 	h1 {
-		@apply font-bold text-3xl;
+		@apply text-4xl sm:text-5xl;
 	}
 	h2 {
-		@apply text-2xl font-bold;
+		@apply text-2xl sm:text-3xl;
 	}
 	h3 {
-		@apply text-xl font-bold;
+		@apply text-xl sm:text-2xl;
 	}
 }
 
 @layer components {
 	.tag {
-		@apply px-3 py-1 rounded-sm text-sm font-medium bg-lightMode-accent text-darkMode-text dark:bg-darkMode-accent dark:text-lightMode-text;
+		@apply px-2 py-1 rounded-md text-xs font-bold tracking-wide uppercase border border-lightMode-accent/20 text-lightMode-accent dark:border-darkMode-accent/20 dark:text-darkMode-accent bg-lightMode-accent/5 dark:bg-darkMode-accent/5;
+		font-family: 'Sohne', sans-serif;
 	}
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+	font-family: 'Sohne', sans-serif;
+}
+
+.prose p,
+.prose li,
+.prose blockquote {
+	font-family: 'Tiempos', serif;
 }
 
 .prose code::before,
@@ -73,18 +107,21 @@ html {
 	content: '' !important;
 }
 
+/* Light mode inline code */
 .prose code {
-	background-color: rgba(156, 163, 175, 0.5);
+	background-color: rgba(156, 163, 175, 0.2);
 	border-radius: 0.25rem;
 	padding: 0.125rem 0.375rem;
 	font-size: 0.875em;
 	font-weight: 400;
+	color: var(--color-lightMode-accent);
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 .prose.dark code,
 .dark .prose code {
-	background-color: oklch(0.27 0.04 260 / 0.8);
-	color: oklch(0.92 0.02 260);
+	background-color: rgba(255, 255, 255, 0.1);
+	color: var(--color-darkMode-accent);
 }
 
 .prose pre code,
@@ -92,4 +129,5 @@ html {
 	background-color: transparent;
 	padding: 0;
 	font-size: 100%;
+	color: inherit;
 }
