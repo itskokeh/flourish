@@ -23,55 +23,85 @@
 		<meta name="description" content={post.metaDescription} />
 		<meta name="keywords" content={keywords} />
 
-		<!-- Open Graph -->
 		<meta property="og:title" content={post.metaTitle} />
 		<meta property="og:description" content={post.metaDescription} />
 		<meta property="og:type" content="article" />
 		<meta property="og:image" content={post.featuredImage} />
 
-		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:title" content={post.metaTitle} />
 		<meta name="twitter:description" content={post.metaDescription} />
 	{/if}
 </svelte:head>
 
-<article class="prose dark:prose-invert mx-auto prose-img:w-200">
+<article class="py-12 sm:py-20">
 	{#if post}
-		<h1 class="mb-0">{post.title}</h1>
-		{#if post.publishDate}
-			<p class="font-bold">
-				Published: {post.publishDate}
-			</p>
-			<p class="font-bold -mt-4">
-				By: <a
-					href="http://x.com/itskokeh"
-					target="_blank"
-					class="font-bold underline-offset-4 hover:dark:text-yellow-400"
-					>Kokeh</a
-				>
-			</p>
-		{/if}
-		{#if post.tags}
-			<div class="flex flex-wrap items-center gap-2 mb-4">
-				{#each post.tags as tag}
-					<span class="tag">{tag}</span>
-				{/each}
+		<header class="mb-10 text-center space-y-6">
+			<h1
+				class="text-4xl sm:text-6xl font-bold tracking-tight text-lightMode-text dark:text-darkMode-text leading-tight"
+			>
+				{post.title}
+			</h1>
+
+			<div
+				class="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-gray-500 dark:text-gray-400"
+			>
+				{#if post.publishDate}
+					<time datetime={post.publishDate}>{post.publishDate}</time>
+					<span class="hidden sm:inline text-gray-300">•</span>
+				{/if}
+
+				<div class="flex items-center gap-2">
+					<span>By</span>
+					<a
+						href="http://x.com/itskokeh"
+						target="_blank"
+						class="font-bold text-lightMode-text dark:text-white hover:text-lightMode-accent dark:hover:text-darkMode-accent underline decoration-2 underline-offset-4 transition-colors"
+					>
+						Kokeh
+					</a>
+				</div>
 			</div>
-		{/if}
-		<img
-			src={compressImage(post.featuredImage, 800, 600)}
-			alt="featured"
-			class="mt-0"
-			width="800"
-			height="600"
-			fetchpriority="high"
-			loading="eager"
-		/>
-		{#if htmlContent}
-			{@html htmlContent}
-		{/if}
+
+			{#if post.tags}
+				<div class="flex flex-wrap justify-center gap-2 pt-2">
+					{#each post.tags as tag}
+						<span class="tag">{tag}</span>
+					{/each}
+				</div>
+			{/if}
+		</header>
+
+		<figure class="mb-12">
+			<img
+				src={compressImage(post.featuredImage, 800, 600)}
+				alt={post.title}
+				class="w-full h-auto rounded-xl shadow-md border border-gray-100 dark:border-gray-800"
+				width="800"
+				height="600"
+				fetchpriority="high"
+				loading="eager"
+			/>
+		</figure>
+
+		<div
+			class="
+      prose prose-lg dark:prose-invert max-w-none
+      prose-headings:font-bold prose-headings:tracking-tight
+      prose-a:text-lightMode-accent dark:prose-a:text-darkMode-accent prose-a:no-underline hover:prose-a:underline
+      prose-img:rounded-xl prose-img:shadow-sm
+      prose-blockquote:border-l-lightMode-accent dark:prose-blockquote:border-l-darkMode-accent
+    "
+		>
+			{#if htmlContent}
+				{@html htmlContent}
+			{/if}
+		</div>
 	{:else}
-		<span class="text-7xl font-extrabold">Loading...</span>
+		<div class="flex justify-center items-center h-64">
+			<span class="text-xl font-medium animate-pulse text-gray-400"
+				>Loading...</span
+			>
+		</div>
 	{/if}
 </article>
