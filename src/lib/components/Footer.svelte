@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Heart } from '$lib';
 	import { socialLinks } from '$lib/utils/socialLinks';
-	import { page } from '$app/state'; // Import page store
+	import { page } from '$app/state';
 
 	const date = new Date();
 </script>
@@ -11,7 +11,7 @@
 >
 	{#if page.url.pathname !== '/'}
 		<div class="p-4 flex md:gap-6 gap-4 justify-center">
-			{#each socialLinks as { url, component: Icon, ariaLabel }}
+			{#each socialLinks as { url, component: Icon, ariaLabel, extraClass }}
 				<a
 					href={url}
 					class="flex items-center hover:text-lightMode-accent dark:hover:text-darkMode-accent transition-colors"
@@ -19,7 +19,7 @@
 					rel="noopener noreferrer"
 					target="_blank"
 				>
-					<Icon class="w-8 h-8 sm:w-10 sm:h-10" />
+					<Icon class="w-8 h-8 sm:w-10 sm:h-10 {extraClass || ''}" />
 				</a>
 			{/each}
 		</div>
