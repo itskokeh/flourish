@@ -1,9 +1,10 @@
+import type { Component } from 'svelte';
 import { Blog, Home, Projects } from '$lib';
 
 interface NavLink {
 	name: string;
 	href: string;
-	icon: any;
+	icon: Component;
 }
 
 export const navLinks: NavLink[] = [
