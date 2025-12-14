@@ -67,7 +67,7 @@
 			to open-source, and experimenting with serverless architectures.
 		</p>
 
-		<a
+		<!-- <a
 			href="/cv.pdf"
 			download="Okechukwu_Okeke_CV.pdf"
 			class="
@@ -78,7 +78,7 @@
         "
 		>
 			<span class="w-4 h-4">↓</span> Download CV
-		</a>
+		</a> -->
 		<div class="flex gap-5 items-center">
 			{#each socialLinks as { url, component: Icon, ariaLabel }}
 				<a
