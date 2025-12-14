@@ -107,7 +107,6 @@ html {
 	content: '' !important;
 }
 
-/* Light mode inline code */
 .prose code {
 	background-color: rgba(156, 163, 175, 0.2);
 	border-radius: 0.25rem;

@@ -6,6 +6,7 @@ type socialLink = {
 	url: string;
 	component: Component;
 	ariaLabel: string;
+	extraClass?: string
 };
 export const socialLinks: socialLink[] = [
 	{
@@ -37,5 +38,6 @@ export const socialLinks: socialLink[] = [
 		url: 'https://goodreads.com/itskokeh',
 		component: GoodReads,
 		ariaLabel: 'Visit my Goodreads profile',
+		extraClass: 'scale-115'
 	},
 ];

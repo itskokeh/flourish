@@ -80,7 +80,7 @@
 			<span class="w-4 h-4">↓</span> Download CV
 		</a> -->
 		<div class="flex gap-5 items-center">
-			{#each socialLinks as { url, component: Icon, ariaLabel }}
+			{#each socialLinks as { url, component: Icon, ariaLabel, extraClass }}
 				<a
 					href={url}
 					aria-label={ariaLabel}
@@ -88,7 +88,7 @@
 					rel="noopener noreferrer"
 					class="text-gray-500 hover:text-lightMode-accent dark:text-gray-400 dark:hover:text-darkMode-accent transition-colors duration-200"
 				>
-					<Icon class="w-6 h-6" />
+					<Icon class="w-6 h-6 {extraClass || ''}" />
 				</a>
 			{/each}
 		</div>

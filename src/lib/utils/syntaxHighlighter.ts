@@ -14,13 +14,13 @@ export const highlightExistingPreCodeBlocks = async () => {
 					.find((cls) => cls.startsWith('language-'))
 					?.replace('language-', '') || 'javascript';
 
-			const highlighted = await codeToHtml(code, { lang, theme: 'vitesse-dark' });
+			const highlighted = await codeToHtml(code, {
+				lang,
+				theme: 'ayu-dark',
+			});
 
-			// Create a temporary container to extract only the inner HTML
 			const tmp = document.createElement('div');
 			tmp.innerHTML = highlighted;
-
-			// Replace only the code element's innerHTML
 			codeElement.innerHTML = tmp.querySelector('code')?.innerHTML || '';
 			codeElement.className = tmp.querySelector('code')?.className || '';
 		}),

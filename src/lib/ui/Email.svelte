@@ -1,21 +1,20 @@
 <script lang="ts">
-	import type { SVGAttributes } from 'svelte/elements';
-	type Props = {
-		class?: string;
-		[key: string]: any;
-	} & SVGAttributes<SVGElement>;
-	let { class: classname, ...rest }: Props = $props();
+  import type { SVGAttributes } from 'svelte/elements';
+  type Props = {
+    class?: string;
+    [key: string]: any;
+  } & SVGAttributes<SVGElement>;
+  let { class: classname, ...rest }: Props = $props();
 </script>
 
 <svg
-	xmlns="http://www.w3.org/2000/svg"
-	{...rest}
-	class={classname}
-	width="32"
-	height="32"
-	fill="currentColor"
-	viewBox="0 0 256 256"
-	><path
-		d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48Zm-96,85.15L52.57,64H203.43ZM98.71,128,40,181.81V74.19Zm11.84,10.85,12,11.05a8,8,0,0,0,10.82,0l12-11.05,58,53.15H52.57ZM157.29,128,216,74.18V181.82Z"
-	></path></svg
+  xmlns="http://www.w3.org/2000/svg"
+  {...rest}
+  class={classname}
+  viewBox="0 0 24 24"
+  fill="currentColor"
 >
+  <path
+    d="M1.75 3h20.5c.966 0 1.75.784 1.75 1.75v14.5A1.75 1.75 0 0 1 22.25 21H1.75A1.75 1.75 0 0 1 0 19.25V4.75C0 3.784.784 3 1.75 3Zm0 2.5v.086l9.648 8.04a.75.75 0 0 0 .963.03l.08-.073L22.25 5.518V4.75a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25Zm0 13.75h20.5a.25.25 0 0 0 .25-.25V7.472l-9.336 7.78a2.25 2.25 0 0 1-2.738.106l-.152-.128L1.5 7.39v11.86c0 .138.112.25.25.25Z"
+  />
+</svg>
