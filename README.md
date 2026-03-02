@@ -1,5 +1,7 @@
 # The Rundown
 
+> This repository has migrated to a private repository. This version is not longer actively maintained.
+
 ## Motivation
 
 I've decided to build my website with svelte because it is easy to use and setup, and a trial would make you abandon other frameworks. Due to my laziness, I have thought deeply about the tools to use and decided to use these tools that's easy to setup (a scenario where laziness is an advantage).
